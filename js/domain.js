@@ -57,14 +57,14 @@ export function regionFor(country, postcode) {
 }
 
 export const OWNERS = [
-  { id: 'o1', name: 'Lena Hoffmann', role: 'Specification advisor North', publicRole: 'Your architect advisor', initials: 'LH', phone: '+49 40 555 0101', email: 'lena.hoffmann@vb-demo.example', color: '#3a6ea5' },
-  { id: 'o2', name: 'Marco Weber', role: 'Specification advisor South', publicRole: 'Your architect advisor', initials: 'MW', phone: '+49 89 555 0102', email: 'marco.weber@vb-demo.example', color: '#7a5c99' },
-  { id: 'o3', name: 'Aylin Demir', role: 'Specification advisor West', publicRole: 'Your architect advisor', initials: 'AD', phone: '+49 211 555 0103', email: 'aylin.demir@vb-demo.example', color: '#2f8f6f' },
-  { id: 'o4', name: 'Jonas Richter', role: 'Specification advisor East', publicRole: 'Your architect advisor', initials: 'JR', phone: '+49 30 555 0104', email: 'jonas.richter@vb-demo.example', color: '#b06a2c' },
-  { id: 'o5', name: 'Sophie Keller', role: 'Key account manager', publicRole: 'Your key account manager', initials: 'SK', phone: '+49 69 555 0105', email: 'sophie.keller@vb-demo.example', color: '#a0405a' },
-  { id: 'o6', name: 'Tobias Wagner', role: 'Trade sales Germany', publicRole: 'Your trade sales contact', initials: 'TW', phone: '+49 221 555 0106', email: 'tobias.wagner@vb-demo.example', color: '#4f7f2f' },
-  { id: 'o7', name: 'Clara Fischer', role: 'Export sales DACH & international', publicRole: 'Your sales advisor', initials: 'CF', phone: '+49 6864 555 0107', email: 'clara.fischer@vb-demo.example', color: '#2b7c8c' },
-  { id: 'o8', name: 'Inside sales queue', role: 'Queue · customer service', publicRole: 'Customer service team', initials: 'IS', phone: '+49 6864 555 0100', email: 'service@vb-demo.example', color: '#6b7280' },
+  { id: 'o1', name: 'Lena Hoffmann', role: 'Specification advisor North', publicRole: 'Your architect advisor', initials: 'LH', phone: '+49 40 66969 101', email: 'lena.hoffmann@vb-demo.example', color: '#3a6ea5' },
+  { id: 'o2', name: 'Marco Weber', role: 'Specification advisor South', publicRole: 'Your architect advisor', initials: 'MW', phone: '+49 89 99998 102', email: 'marco.weber@vb-demo.example', color: '#7a5c99' },
+  { id: 'o3', name: 'Aylin Demir', role: 'Specification advisor West', publicRole: 'Your architect advisor', initials: 'AD', phone: '+49 221 4710 103', email: 'aylin.demir@vb-demo.example', color: '#2f8f6f' },
+  { id: 'o4', name: 'Jonas Richter', role: 'Specification advisor East', publicRole: 'Your architect advisor', initials: 'JR', phone: '+49 30 23125 104', email: 'jonas.richter@vb-demo.example', color: '#b06a2c' },
+  { id: 'o5', name: 'Sophie Keller', role: 'Key account manager', publicRole: 'Your key account manager', initials: 'SK', phone: '+49 69 90009 105', email: 'sophie.keller@vb-demo.example', color: '#a0405a' },
+  { id: 'o6', name: 'Tobias Wagner', role: 'Trade sales Germany', publicRole: 'Your trade sales contact', initials: 'TW', phone: '+49 221 4710 106', email: 'tobias.wagner@vb-demo.example', color: '#4f7f2f' },
+  { id: 'o7', name: 'Clara Fischer', role: 'Export sales DACH & international', publicRole: 'Your sales advisor', initials: 'CF', phone: '+49 69 90009 107', email: 'clara.fischer@vb-demo.example', color: '#2b7c8c' },
+  { id: 'o8', name: 'Inside sales queue', role: 'Queue · customer service', publicRole: 'Customer service team', initials: 'IS', phone: '+49 69 90009 100', email: 'service@vb-demo.example', color: '#6b7280' },
 ];
 export const ownerById = (id) => OWNERS.find((o) => o.id === id) || OWNERS[7];
 

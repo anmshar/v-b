@@ -89,7 +89,7 @@ export function registerCadenas(data) {
     if (!p) {
       p = newProspect(s, { ...data, country: 'Germany', postcode: data.postcode || '' }, 'CADENAS download report');
       s.prospects.unshift(p);
-      logEvent(s, 'Account Engagement', `Prospect created from CADENAS download report: ${p.name} (only if V&B's CADENAS contract allows report access)`, { prospectId: p.id });
+      logEvent(s, 'Account Engagement', `Prospect created from CADENAS download report: ${p.name} (if CADENAS download reports are available)`, { prospectId: p.id });
     }
     s.visitor.prospectId = p.id;
   });
@@ -135,7 +135,7 @@ export function submitEnquiry(f) {
       opt_in: f.marketing ? 'pending_double_opt_in' : 'none', request_ref: ref,
     }).toString();
     logEvent(s, 'Website', `Enquiry ${ref} submitted (${f.types.join(' + ')}) for “${project.name}”`, { ref });
-    logEvent(s, 'Form handler', 'POST https://go.example-pardot.com/l/…/vb-enquiry · application/x-www-form-urlencoded', { payload: body, ref });
+    logEvent(s, 'Form handler', 'POST https://go.pardot.example/l/…/vb-enquiry · application/x-www-form-urlencoded', { payload: body, ref });
 
     // 2. Prospect created or updated (matched by email)
     let p = s.prospects.find((x) => x.email.toLowerCase() === contact.email.toLowerCase());

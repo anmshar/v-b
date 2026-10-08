@@ -17,14 +17,16 @@ concurrency:
 jobs:
   test:
     name: Build and end-to-end test
-    runs-on: ubuntu-latest
+    # Pinned: Playwright 1.56.1 has no Chromium build for Ubuntu 26.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false
 
       - name: Install Playwright with Chromium
         run: |
@@ -39,7 +41,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/pages"
           ln -s "$GITHUB_WORKSPACE/_site" "$RUNNER_TEMP/pages/v-b"
           python3 -m http.server 8765 --directory "$RUNNER_TEMP/pages" > "$RUNNER_TEMP/server.log" 2>&1 &
-          for i in $(seq 1 30); do
+          for _ in $(seq 1 30); do
             curl -sf http://localhost:8765/v-b/index.html > /dev/null && exit 0
             sleep 1
           done
@@ -50,7 +52,7 @@ jobs:
 
       - name: Upload screenshots
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: e2e-screenshots
           path: screenshots
@@ -58,7 +60,7 @@ jobs:
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -74,15 +76,24 @@ jobs:
       - id: check
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         run: |
-          if gh api "repos/${{ github.repository }}/pages" --silent 2> /dev/null; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-          else
+          skip() {
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            msg="GitHub Pages is not enabled yet. In Settings → Pages, set Source to 'GitHub Actions', then re-run this workflow."
-            echo "::warning title=Deployment skipped::$msg"
-            echo "### Deployment skipped" >> "$GITHUB_STEP_SUMMARY"
-            echo "$msg" >> "$GITHUB_STEP_SUMMARY"
+            echo "::warning title=Deployment skipped::$1"
+            printf '### Deployment skipped\n%s\n' "$1" >> "$GITHUB_STEP_SUMMARY"
+          }
+          if out=$(gh api "repos/$REPO/pages" --jq .build_type 2>&1); then
+            if [ "$out" = "workflow" ]; then
+              echo "enabled=true" >> "$GITHUB_OUTPUT"
+            else
+              skip "GitHub Pages publishes from a branch ('$out'). In Settings → Pages, set Source to 'GitHub Actions', then re-run this workflow."
+            fi
+          elif printf '%s' "$out" | grep -q 'HTTP 404'; then
+            skip "GitHub Pages is not enabled yet. In Settings → Pages, set Source to 'GitHub Actions', then re-run this workflow."
+          else
+            echo "::error title=Could not read the Pages configuration::$out"
+            exit 1
           fi
 
   deploy:
@@ -97,7 +108,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

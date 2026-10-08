@@ -22,7 +22,7 @@ export function chromeTop(path) {
   const pending = s.jobs.length;
   return `
   <header class="of-top">
-    <div class="of-brand"><span class="of-grid">⋮⋮⋮</span><b>V&amp;B Back office</b><span class="of-sub">Salesforce org · simulated</span></div>
+    <div class="of-brand"><span class="of-grid">⋮⋮⋮</span><b>V&amp;B Back office</b><span class="of-sub">Concept prototype · simulated Salesforce org · not a V&amp;B system</span></div>
     <div class="of-clock">
       ${pending ? `<span class="sync-pill" title="Connector jobs waiting">⟳ ${pending} sync job${pending > 1 ? 's' : ''} pending <button class="link" data-act="sync-now">run now</button></span>` : ''}
       <span title="Demo clock">🕑 ${new Date(t).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>
@@ -406,7 +406,7 @@ function opp(id) {
           <dt>Status</dt><dd>${o.lost ? '<span class="badge bad">Lost</span>' : `Stage ${o.stage}/9`}</dd>
         </dl>
         <h4>Stage history</h4><ul class="timeline compact">${[...o.history].reverse().map((h) => `<li><span>Stage ${h.stage}: ${esc(OPP_STAGES[h.stage - 1])}</span><span class="muted small">${fmtDateTime(h.t)}</span></li>`).join('')}</ul>
-        <p class="muted small">Offers, orders and delivery status come from the SAP chain (IBP, P11, S/4HANA, EWM) in a later phase.</p></section>
+        <p class="muted small">Offers, orders and delivery status come from V&amp;B’s SAP order chain in a later phase.</p></section>
         ${req ? `<section class="card arch-view"><h3>👁 What the architect sees</h3>${publicPreview(s, req)}</section>` : ''}
       </div>`;
     },
@@ -551,7 +551,7 @@ function insights() {
       const decided = s.leads.filter((l) => l.ai && l.ai.status !== 'pending');
       const conv = s.leads.filter((l) => l.oppId).length / Math.max(1, s.leads.length);
       return `
-      <div class="page-head"><div><p class="eyebrow">AI use case 3 · journey & signal insights</p><h1>Where architects drop out</h1><p class="muted">${b.months} months of baseline (≈ 15,000 page views/month, assumed) plus live, consent-based demo events. Only visitors who accepted analytics are counted.</p></div>
+      <div class="page-head"><div><p class="eyebrow">AI use case 3 · journey & signal insights</p><h1>Where architects drop out</h1><p class="muted">${b.months} months of illustrative baseline data plus live, consent-based demo events. Only visitors who accepted analytics are counted.</p></div>
         <button class="btn" data-act="report">✨ Generate monthly insight report</button></div>
       <div class="cols2">
         <section class="card"><h3>Journey funnel</h3>
@@ -576,7 +576,7 @@ function insights() {
         <section class="card"><h3>Top zero-result searches</h3><table class="tbl compact">${b.topZeroQueries.map(([q, n]) => `<tr><td>“${esc(q)}”</td><td>${n}</td></tr>`).join('')}${zeroLive.map((q) => `<tr class="live"><td>“${esc(q)}” <span class="badge">live</span></td><td>1</td></tr>`).join('')}</table></section>
         <section class="card"><h3>Where the enquiry form loses people</h3><table class="tbl compact">${b.formDropFields.map(([fl, v]) => `<tr><td>${esc(fl)}</td><td><div class="scorebar"><i style="width:${v * 250}%"></i><span>${fmtPct(v)}</span></div></td></tr>`).join('')}</table></section>
       </div>
-      ${rep ? `<section class="card report"><h3>✨ Insight report <span class="ai-badge">${esc(rep.model)}</span> <span class="muted small">${esc(rep.period)} · ≈ USD ${rep.costUSD.toFixed(2)} per run</span></h3>
+      ${rep ? `<section class="card report"><h3>✨ Insight report <span class="ai-badge">${esc(rep.model)}</span> <span class="badge">illustrative data</span> <span class="muted small">${esc(rep.period)} · ≈ USD ${rep.costUSD.toFixed(2)} per run</span></h3>
         ${rep.findings.map((x, i) => `<div class="finding"><h4>${i + 1}. ${esc(x.title)}</h4><p>${esc(x.detail)}</p><p><b>Proposed fix:</b> ${esc(x.action)}</p><p class="test">🧪 ${esc(x.test)}</p></div>`).join('')}
       </section>` : ''}`;
     },

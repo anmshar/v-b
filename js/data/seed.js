@@ -12,7 +12,7 @@ const PEOPLE = [
   ['Anna Schulz', 'schulz.raum', 'Interior designer', 'Germany', '10115', 'Berlin', 'Flagship store Mitte', 'Retail', 5, 420],
   ['Peter Lange', 'Lange Projektentwicklung', 'Developer / investor', 'Germany', '60311', 'Frankfurt am Main', 'Office tower Mainkai', 'Office', 2, 9500],
   ['Sabine Roth', 'RothArchitektur', 'Architect', 'Germany', '70173', 'Stuttgart', 'Clinic extension Killesberg', 'Healthcare', 6, 3100],
-  ['Felix Hartmann', 'HPP Planungsgruppe Nord', 'Planner / engineer', 'Germany', '28195', 'Bremen', 'School campus Überseestadt', 'Education', 4, 5200],
+  ['Felix Hartmann', 'Hartmann Planungsgruppe Nord', 'Planner / engineer', 'Germany', '28195', 'Bremen', 'School campus Überseestadt', 'Education', 4, 5200],
   ['Nina Berger', 'Berger Architects', 'Architect', 'Austria', '1010', 'Wien', 'Spa hotel Wienerwald', 'Hotel', 5, 2200],
   ['Lukas Meier', 'Meier Baumanagement', 'Planner / engineer', 'Switzerland', '8001', 'Zürich', 'Residential Seefeld', 'Residential (multi-unit)', 7, 1300],
   ['Julia Neumann', 'Atelier Neumann', 'Architect', 'Germany', '04109', 'Leipzig', 'Museum café', 'Public / culture', 3, 280],
@@ -123,7 +123,7 @@ export function buildSeed() {
       types: r() > 0.3 ? ['Samples', 'Advice'] : ['Advice'],
       project: { name: project, type, phase, area, start: '2027-03', applications: APPS_BY_TYPE[type] || ['floor-res'] },
       products, samples: [], message: '',
-      contact: { name, email, phone: r() > 0.4 ? '+49 170 555 ' + (1000 + i) : '', company, role, country, postcode, city },
+      contact: { name, email, phone: r() > 0.4 ? '+49 30 23125 ' + (200 + i) : '', company, role, country, postcode, city },
     };
     if (req.types.includes('Samples')) req.samples = products.map((id) => ({ productId: id, format: '30×60' }));
     s.requests.push(req);

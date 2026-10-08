@@ -100,7 +100,7 @@ function home() {
         <div class="hero-text">
           <p class="eyebrow">Product discovery for architects</p>
           <h1>Describe your project — or show us a photo.</h1>
-          <p class="lead">Get ranked V&amp;B tiles with reasons and safety checks, instead of ${fmtNum(TODAY_SELECTOR_RESULTS)} unranked results.</p>
+          <p class="lead">Get ranked V&amp;B tiles with reasons and safety checks, instead of a long text-only list (${fmtNum(TODAY_SELECTOR_RESULTS)} results in today’s selector when checked on 8 Oct 2026).</p>
           <form class="searchbox" id="hero-search">
             <textarea name="q" rows="2" placeholder="e.g. Hotel lobby floor, warm grey concrete look, large format" aria-label="Describe your project"></textarea>
             <div class="row gap">
@@ -162,7 +162,7 @@ function search(q) {
           <aside class="interp">
             <h4>We understood</h4>
             ${interp.length ? `<dl>${interp.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : '<p class="muted">No specific requirements recognised; matching by keywords.</p>'}
-            <p class="muted small">Today's product selector shows ${fmtNum(TODAY_SELECTOR_RESULTS)} unranked results. Slip guidance is simplified — confirm with V&amp;B technical service.</p>
+            <p class="muted small">Today’s product selector listed ${fmtNum(TODAY_SELECTOR_RESULTS)} text-only results (8 Oct 2026). Slip guidance is simplified — confirm with V&amp;B technical service.</p>
             <div class="feedback">Helpful? <button class="btn tiny ghost" data-fb="1">👍</button><button class="btn tiny ghost" data-fb="0">👎</button></div>
           </aside>
           <div>

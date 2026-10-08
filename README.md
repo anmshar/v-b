@@ -1,7 +1,7 @@
 # V&B Tiles: client journey and back-office demo
 
-A clickable prototype of the full journey from the architecture and AI use-case
-draft (8 Oct 2026). The architect-facing website and the internal back office
+A clickable prototype of the full journey, from an architect's first search to an
+owned Salesforce lead, samples and project support. The architect-facing website and the internal back office
 run side by side and share live state. An enquiry on the website shows up in
 the back office within seconds as an owned Sales Cloud lead with a due task, and
 every back-office action shows up on the architect's status page.
@@ -24,8 +24,8 @@ Live at **https://anmshar.github.io/v-b/** once Pages is enabled (see below).
 
 `.github/workflows/pages.yml` runs on every push to `main` (and can be started by hand):
 
-1. builds `_site/` with `scripts/build-site.sh` (only `index.html`, `robots.txt`, `css/` and `js/`
-   are published; tests and docs are not),
+1. builds `_site/` with `scripts/build-site.sh` (only `index.html`, `css/` and `js/` are published;
+   tests and docs are not),
 2. serves it under `/v-b/`, the way Pages does, and runs the full end-to-end test against it,
 3. deploys to Pages, but only when the test passes.
 
@@ -41,9 +41,10 @@ warning instead of failing.
 If the deploy is rejected by environment protection rules, add `main` under
 *Settings → Environments → github-pages → Deployment branches*.
 
-The hosted page is public, so it carries a `noindex` tag and a `robots.txt` that ask search
-engines not to list it. It also says on the page that it is a concept prototype, not an
-official V&B website.
+The hosted page is public, so it carries a `noindex` meta tag that asks search engines not to
+list it. (A `robots.txt` would not help: on a project site it sits under `/v-b/`, and crawlers
+only read it at the domain root.) The page also says it is a concept prototype, not an official
+V&B website.
 
 | Route | What it is |
 |---|---|
@@ -94,15 +95,15 @@ back-office menu to start over.
 
 ## What is a placeholder
 
-These need V&B input or access before they can be made real (see "Questions for V&B IT" in the draft):
+These need V&B input or access before they can be made real:
 
 - Collection names, colours, formats, slip values and BIM coverage are invented; they would come from Salsify/CADENAS.
 - The nine opportunity stage names and their exit criteria.
 - Owners, regions, queues and assignment rules.
 - The first-contact service level (1 working day is assumed).
-- The analytics baseline (about 15,000 page views/month, extrapolated) and the funnel numbers.
-- AI is deterministic and offline. The model names and per-call costs shown follow the draft's
-  sizing (Claude Haiku 5.5 / Sonnet 5.5 list prices).
+- The analytics baseline and funnel numbers are illustrative.
+- AI is deterministic and offline. The per-call costs shown are estimates based on current
+  Claude Haiku 5.5 / Sonnet 5.5 list prices.
 - Slip-resistance guidance is simplified and has to be confirmed with V&B technical service.
 
 ## Code layout
