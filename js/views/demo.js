@@ -102,7 +102,7 @@ export function launcher() {
     render() {
       return `
       <div class="launch">
-        <header><span class="logo">V&amp;B</span><div><h1>V&amp;B Tiles — client journey &amp; back-office demo</h1><p class="lead">From an architect's first search to a qualified Salesforce lead, samples and project support. Everything runs in your browser with simulated data.</p></div></header>
+        <header><span class="logo">V&amp;B</span><div><h1>V&amp;B Tiles — client journey &amp; back-office demo</h1><p class="lead">From an architect's first search to a qualified Salesforce lead, samples and project support. Everything runs in your browser with simulated data.</p><p class="muted small">Concept prototype for discussion, not an official V&amp;B website.</p></div></header>
         <div class="launch-cards">
           <a class="lcard primary" href="#/demo"><span class="ic">▣▣</span><h2>Guided split-screen demo</h2><p>Website on the left, back office on the right, with an 11-step tour. Best for presenting.</p></a>
           <a class="lcard" href="#/site" target="_blank" rel="noopener"><span class="ic">◧</span><h2>Architect website</h2><p>Discovery (text + photo), configurator, BIM/CAD, samples request, status page.</p></a>

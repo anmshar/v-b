@@ -39,7 +39,7 @@ export function chromeBottom() {
       : '';
   return `
   <footer class="site-footer">
-    <div>Prototype · all data simulated · product data would come from Salsify, BIM files from CADENAS, enquiries go to Salesforce.</div>
+    <div>Concept prototype, not an official V&amp;B website · all data simulated · product data would come from Salsify, BIM files from CADENAS, enquiries go to Salesforce.</div>
     <div class="row gap">
       ${v.contact ? `<span class="muted">Visitor: ${esc(v.contact.name)}</span>` : '<span class="muted">Anonymous visitor</span>'}
       <button class="link" data-act="new-visitor">Start as a new visitor</button>

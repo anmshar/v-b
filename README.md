@@ -17,7 +17,33 @@ open http://localhost:8765  # start page: guided demo, website or back office
 ```
 
 The page has to be served over http(s), because ES modules don't load from `file://`.
-It can also be hosted on any static host, such as GitHub Pages or Netlify.
+
+## Hosted version (GitHub Pages)
+
+Live at **https://anmshar.github.io/v-b/** once Pages is enabled (see below).
+
+`.github/workflows/pages.yml` runs on every push to `main` (and can be started by hand):
+
+1. builds `_site/` with `scripts/build-site.sh` (only `index.html`, `robots.txt`, `css/` and `js/`
+   are published; tests and docs are not),
+2. serves it under `/v-b/`, the way Pages does, and runs the full end-to-end test against it,
+3. deploys to Pages, but only when the test passes.
+
+Pull requests run steps 1–2 only. If Pages isn't enabled yet, the deploy is skipped with a
+warning instead of failing.
+
+**One-time repository settings** (needs repo admin):
+
+1. *Settings → General → Default branch*: switch to `main`.
+2. *Settings → Pages → Build and deployment → Source*: choose **GitHub Actions**.
+3. Re-run the latest "Test and deploy to GitHub Pages" workflow (Actions tab), or push to `main`.
+
+If the deploy is rejected by environment protection rules, add `main` under
+*Settings → Environments → github-pages → Deployment branches*.
+
+The hosted page is public, so it carries a `noindex` tag and a `robots.txt` that ask search
+engines not to list it. It also says on the page that it is a concept prototype, not an
+official V&B website.
 
 | Route | What it is |
 |---|---|

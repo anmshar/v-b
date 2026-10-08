@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "npx --yes serve -l 8765 .",
+    "build": "sh scripts/build-site.sh",
     "test": "node tests/e2e.mjs http://localhost:8765/index.html"
   }
 }
