@@ -1,0 +1,11 @@
+{
+  "name": "vb-tiles-journey-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Clickable prototype of the V&B Tiles architect journey and back office (simulated data).",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve -l 8765 .",
+    "test": "node tests/e2e.mjs http://localhost:8765/index.html"
+  }
+}
